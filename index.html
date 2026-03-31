@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Riconnessione - Energy Ecosystem</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#fc7c78",
+              "on-secondary-fixed-variant": "#1e4f3a",
+              "inverse-primary": "#006c49",
+              "on-primary": "#003824",
+              "secondary-container": "#21523c",
+              "secondary": "#9ed2b5",
+              "surface-container-high": "#232a3a",
+              "on-surface": "#dce2f7",
+              "outline-variant": "#3c4a42",
+              "on-tertiary": "#650911",
+              "primary": "#4edea3",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#323949",
+              "outline": "#86948a",
+              "inverse-surface": "#dce2f7",
+              "surface-variant": "#2e3545",
+              "surface-tint": "#4edea3",
+              "primary-container": "#10b981",
+              "on-tertiary-container": "#711419",
+              "on-surface-variant": "#bbcabf",
+              "on-background": "#dce2f7",
+              "on-secondary-container": "#91c4a8",
+              "secondary-fixed-dim": "#9ed2b5",
+              "surface-dim": "#0c1322",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#842225",
+              "on-secondary": "#013824",
+              "on-primary-container": "#00422b",
+              "on-tertiary-fixed": "#410005",
+              "on-primary-fixed-variant": "#005236",
+              "tertiary": "#ffb3af",
+              "tertiary-fixed-dim": "#ffb3af",
+              "surface": "#0c1322",
+              "inverse-on-surface": "#293040",
+              "primary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#070e1d",
+              "background": "#0c1322",
+              "surface-container": "#191f2f",
+              "surface-container-highest": "#2e3545",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#ffdad7",
+              "surface-container-low": "#141b2b",
+              "secondary-fixed": "#baeed1",
+              "on-secondary-fixed": "#002113",
+              "on-primary-fixed": "#002113",
+              "primary-fixed-dim": "#4edea3",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; background-color: #0c1322; color: #dce2f7; }
+      h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .noise-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none; opacity: 0.02; z-index: 9999;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<div class="noise-overlay"></div>
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 space-y-8 bg-[#0c1322] w-64 z-40">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary">bolt</span>
+</div>
+<div>
+<h2 class="font-black text-[#4edea3] leading-none">Luminous Precision</h2>
+<p class="text-[10px] uppercase tracking-widest text-secondary opacity-70 mt-1">Energy Management v1.0</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center space-x-3 p-3 rounded-lg text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-medium">Ecological Impact</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-medium">Grid Status</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-medium">Support</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/20">
+<button class="w-full bg-surface-container-highest text-primary py-3 px-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span>New Simulation</span>
+</button>
+<a class="flex items-center space-x-3 p-3 mt-4 text-[#9ed2b5] opacity-60 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 flex flex-col">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#0c1322] tonal-shift">
+<div class="flex items-center space-x-8">
+<h1 class="text-xl font-bold tracking-tight text-[#4edea3]">Energy Ecosystem</h1>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 font-bold text-sm tracking-wide uppercase" href="#">Riconnessione</a>
+<a class="text-[#9ed2b5] hover:text-white transition-colors text-sm tracking-wide uppercase" href="#">Monitoraggio</a>
+<a class="text-[#9ed2b5] hover:text-white transition-colors text-sm tracking-wide uppercase" href="#">Calcolatore</a>
+</nav>
+</div>
+<div class="flex items-center space-x-5">
+<div class="bg-surface-container-low px-4 py-2 rounded-full flex items-center space-x-3 border-b-2 border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-secondary text-sm">search</span>
+<input class="bg-transparent border-none p-0 text-sm focus:ring-0 text-on-surface placeholder-secondary/40 w-48" placeholder="Cerca pratiche..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant/30">
+<img alt="User avatar" data-alt="close-up portrait of a professional man with a friendly expression, soft studio lighting, blurred tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYdW_5vHhcyF6ktyfrfg0XnoPLo4nYGJHAbpWbuqFovNYSPDKeIIvq_Ut4N6cX699TMudinoO0EfeSoMNcxd-6h1tPHWY_3VKzbYOq6wFuzRxDACwVttpgr_A2rGFXQ8-zrBue04fLYcEkGLKhz_XrL7UdXy2Gpi4EGazXkrVBilJ6r32Ced72_GrFP5oQbYFoYF3dLUreZV3kjq4c6PdSL8C9QI1tOczJB8a3u42l5hMQP7XA56cZQ4IYybf-bC57XC72J52ws4_E"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-12">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+                        Modulo di Assistenza
+                    </div>
+<h2 class="text-5xl font-extrabold leading-tight text-white tracking-tight">Riconnessione <br/><span class="text-primary">Semplificata.</span></h2>
+<p class="text-lg text-secondary font-light max-w-lg leading-relaxed">
+                        Naviga la complessità della burocrazia energetica con il nostro assistente intelligente. Genera una tabella di marcia personalizzata per il tuo impianto.
+                    </p>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary-container rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative bg-surface-container-low p-8 rounded-2xl flex flex-col space-y-6 border border-white/5">
+<div class="flex justify-between items-start">
+<span class="text-[10px] uppercase tracking-widest text-secondary/60">Stato Sistema</span>
+<span class="flex items-center text-primary text-xs font-bold">
+<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                                READY FOR ANALYTICS
+                            </span>
+</div>
+<div class="h-32 flex items-end space-x-2">
+<div class="flex-1 bg-primary/20 rounded-t-sm h-1/2"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm h-3/4"></div>
+<div class="flex-1 bg-primary/60 rounded-t-sm h-1/3"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-full"></div>
+<div class="flex-1 bg-primary/50 rounded-t-sm h-2/3"></div>
+</div>
+<p class="text-xs text-secondary/70 italic">Algoritmo di ottimizzazione pratiche GSE attivo.</p>
+</div>
+</div>
+</section>
+<!-- Quiz/Form Section -->
+<section class="space-y-8">
+<div class="flex items-end justify-between">
+<div>
+<h3 class="text-2xl font-bold text-white">Configura il tuo Profilo</h3>
+<p class="text-sm text-secondary/80">Seleziona i parametri per generare la documentazione necessaria.</p>
+</div>
+<span class="text-4xl font-black text-surface-container-highest opacity-20">01</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Step 1: Tipo Utenza -->
+<div class="bg-surface-container p-1 rounded-xl">
+<div class="bg-surface-container-low rounded-lg p-6 space-y-6">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<h4 class="font-bold text-lg">Tipo Utenza</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center p-6 bg-surface-container-highest rounded-xl border-2 border-primary transition-all group">
+<span class="material-symbols-outlined text-3xl text-primary mb-3">home</span>
+<span class="font-bold text-sm">Domestica</span>
+</button>
+<button class="flex flex-col items-center p-6 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-surface-container-highest transition-all group">
+<span class="material-symbols-outlined text-3xl text-secondary mb-3">business</span>
+<span class="font-bold text-sm text-secondary">Business</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Step 2: Stato Impianto -->
+<div class="bg-surface-container p-1 rounded-xl">
+<div class="bg-surface-container-low rounded-lg p-6 space-y-6">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+<h4 class="font-bold text-lg">Stato Impianto</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center p-6 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-surface-container-highest transition-all group">
+<span class="material-symbols-outlined text-3xl text-secondary mb-3">fiber_new</span>
+<span class="font-bold text-sm text-secondary">Nuovo</span>
+</button>
+<button class="flex flex-col items-center p-6 bg-surface-container-highest rounded-xl border-2 border-primary transition-all group">
+<span class="material-symbols-outlined text-3xl text-primary mb-3">history</span>
+<span class="font-bold text-sm">Dismesso</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Personalized Roadmap / Results -->
+<section class="space-y-8 pt-8">
+<div class="flex items-end justify-between">
+<div>
+<h3 class="text-2xl font-bold text-white">Roadmap Riconnessione</h3>
+<p class="text-sm text-secondary/80">Basato sulla tua selezione: <span class="text-primary font-bold">Domestica + Dismesso</span></p>
+</div>
+<span class="text-4xl font-black text-surface-container-highest opacity-20">02</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Progress Card -->
+<div class="lg:col-span-1 bg-surface-container-high rounded-2xl p-8 flex flex-col justify-between border-t-2 border-primary">
+<div class="space-y-4">
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary">Progresso Attuale</h4>
+<div class="relative pt-8 flex items-center justify-center">
+<svg class="w-48 h-48 -rotate-90">
+<circle class="text-surface-container-highest" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(78,222,163,0.5)]" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="387.04" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-4xl font-black text-white">30%</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Completato</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between text-[11px] font-bold uppercase text-secondary/50">
+<span>Tempo stimato</span>
+<span class="text-on-surface">14 Giorni Lavorativi</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3"></div>
+</div>
+</div>
+</div>
+<!-- Checklist Bento Grid -->
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Step 1 Done -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-primary/20 flex space-x-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">assignment</span>
+</div>
+<div>
+<h5 class="font-bold text-white text-sm">Pratica CIL/CILA</h5>
+<p class="text-xs text-secondary/60 mt-1 leading-relaxed">Comunicazione Inizio Lavori Asseverata depositata al comune.</p>
+<button class="mt-3 text-[10px] font-bold text-primary uppercase flex items-center">Visualizza PDF <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span></button>
+</div>
+</div>
+<!-- Step 2 Active -->
+<div class="bg-surface-container-highest p-6 rounded-xl flex space-x-4 relative overflow-hidden group">
+<div class="absolute top-2 right-2 px-2 py-0.5 bg-primary text-on-primary text-[8px] font-bold rounded-full uppercase tracking-tighter">In Corso</div>
+<div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+</div>
+<div>
+<h5 class="font-bold text-white text-sm">Allaccio Enel</h5>
+<p class="text-xs text-secondary/80 mt-1 leading-relaxed">Verifica tecnica del contatore bidirezionale in corso.</p>
+<div class="mt-4 h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- Step 3 Todo -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 flex space-x-4 opacity-50 grayscale">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+</div>
+<div>
+<h5 class="font-bold text-white text-sm">Pratiche GSE</h5>
+<p class="text-xs text-secondary/60 mt-1 leading-relaxed">Richiesta Scambio sul Posto (SSP) o Ritiro Dedicato.</p>
+<p class="mt-3 text-[10px] font-bold text-secondary/40 uppercase">Attesa Allaccio</p>
+</div>
+</div>
+<!-- Step 4 Todo -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 flex space-x-4 opacity-50 grayscale">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div>
+<h5 class="font-bold text-white text-sm">Collaudo Finale</h5>
+<p class="text-xs text-secondary/60 mt-1 leading-relaxed">Certificazione di conformità dell'impianto (DiCo).</p>
+<p class="mt-3 text-[10px] font-bold text-secondary/40 uppercase">Attesa Precedenti</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Support/Assistant Callout -->
+<section class="bg-gradient-to-br from-surface-container-low to-surface-container-highest p-1 rounded-2xl">
+<div class="bg-surface-container-low rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center space-x-6">
+<div class="relative shrink-0">
+<img alt="AI Assistant" class="w-20 h-20 rounded-full object-cover border-2 border-primary" data-alt="close-up of a sophisticated digital interface with glowing circuit patterns and soft bokeh blue lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_DEJAg1X_1tbGNOlqJhM6PEWNslEAXiQArAZeNdp_hOZ8J1bLBIWjsAUFVs8GfoSoLkBO-WCz9S7dU1s2Ws6JEpi9yqyMbmakOLkgYvjwu6XuSxQW1BRHEbkNYYvu2rdzG9wIkyp5xFVkNmjnkfxT77fT-7VPSOyhgSXPYgZZBV3T-U8nPT3mtVVsVpDuU-4xAYmbqYI_F7VJZns2l_UDax4xktaMxjutjRq30vmjUru_sP-sVHi-mU2vkBSgKrfpK39Q26R995Az"/>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full border-4 border-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold text-white">Assistenza Bureau-Bot</h4>
+<p class="text-sm text-secondary/70 max-w-md">Il nostro assistente AI ha analizzato la tua documentazione. Mancano solo 2 firme digitali per procedere con Enel.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest text-white px-6 py-3 rounded-xl font-bold hover:bg-surface-bright transition-all text-sm">Parla con un umano</button>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-black hover:scale-105 transition-all shadow-lg shadow-primary/20 text-sm">Completa Ora</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="w-full mt-auto border-t border-[#3c4a42]/15 px-8 py-12 flex flex-col md:flex-row justify-between items-center bg-[#0c1322]">
+<p class="text-xs font-light tracking-wide text-[#9ed2b5] opacity-60">© 2024 Kinetic Grid Systems. All rights reserved.</p>
+<div class="flex space-x-8 mt-6 md:mt-0">
+<a class="text-xs font-light tracking-wide text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs font-light tracking-wide text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs font-light tracking-wide text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">API Documentation</a>
+</div>
+</footer>
+</main>
+<!-- FAB (Suppressed based on context: Details Page) -->
+</body></html>
