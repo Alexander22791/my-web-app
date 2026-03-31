@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#fc7c78",
+              "on-secondary-fixed-variant": "#1e4f3a",
+              "inverse-primary": "#006c49",
+              "on-primary": "#003824",
+              "secondary-container": "#21523c",
+              "secondary": "#9ed2b5",
+              "surface-container-high": "#232a3a",
+              "on-surface": "#dce2f7",
+              "outline-variant": "#3c4a42",
+              "on-tertiary": "#650911",
+              "primary": "#4edea3",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#323949",
+              "outline": "#86948a",
+              "inverse-surface": "#dce2f7",
+              "surface-variant": "#2e3545",
+              "surface-tint": "#4edea3",
+              "primary-container": "#10b981",
+              "on-tertiary-container": "#711419",
+              "on-surface-variant": "#bbcabf",
+              "on-background": "#dce2f7",
+              "on-secondary-container": "#91c4a8",
+              "secondary-fixed-dim": "#9ed2b5",
+              "surface-dim": "#0c1322",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#842225",
+              "on-secondary": "#013824",
+              "on-primary-container": "#00422b",
+              "on-tertiary-fixed": "#410005",
+              "on-primary-fixed-variant": "#005236",
+              "tertiary": "#ffb3af",
+              "tertiary-fixed-dim": "#ffb3af",
+              "surface": "#0c1322",
+              "inverse-on-surface": "#293040",
+              "primary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#070e1d",
+              "background": "#0c1322",
+              "surface-container": "#191f2f",
+              "surface-container-highest": "#2e3545",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#ffdad7",
+              "surface-container-low": "#141b2b",
+              "secondary-fixed": "#baeed1",
+              "on-secondary-fixed": "#002113",
+              "on-primary-fixed": "#002113",
+              "primary-fixed-dim": "#4edea3",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(46, 53, 69, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .text-label-caps {
+            text-transform: none; /* Mandatory: Preserve JSON casing */
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#0c1322] dark:bg-[#0c1322] tonal-shift">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-[#4edea3]">Energy Ecosystem</span>
+<nav class="hidden md:flex space-x-6">
+<a class="text-[#9ed2b5] hover:text-white transition-colors text-label-caps" href="#">Riconnessione</a>
+<a class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 font-bold text-label-caps" href="#">Monitoraggio</a>
+<a class="text-[#9ed2b5] hover:text-white transition-colors text-label-caps" href="#">Calcolatore</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high rounded-full px-4 py-1.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 w-32 placeholder-outline" placeholder="Cerca dati..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-[#9ed2b5] hover:bg-[#2e3545] p-2 rounded-full transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#9ed2b5] hover:bg-[#2e3545] p-2 rounded-full transition-all" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Stylized 3D avatar of a professional technician wearing a sleek headset, focused expression, futuristic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQQ87RHcS6J0I5kCIcIWZqoa8cMo1m2TsL7w9EcQEwjGxKn7AVYR_-KbZe10flpGDYphF4vCMZEZHnlFN_PHHxGj_KKfsaaxi0Gtcwdb4BHj0y7-E67Lh1TJGQYZkyvJ7EP88oy_gtlDo7qfVYyEAvuqp2S1d29kpK1V-5SJxu-wF9VWCLNnCgLp8cp0OUyyyt8iO4uJg3QdLslh6AKRfYBTrGgO6kSSzz5C0wCfDuwJ8inoGF4XOz-Zw1vbdePeL_sDRqCZIyUbr3"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col w-64 bg-[#0c1322] p-6 space-y-8 sticky left-0 top-0 h-[calc(100vh-72px)]">
+<div class="space-y-1">
+<h2 class="font-black text-[#4edea3] text-lg">Luminous Precision</h2>
+<p class="text-xs text-[#9ed2b5] opacity-80">Energy Management v1.0</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 p-3 text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-[#232a3a] text-[#4edea3] border-l-4 border-[#4edea3] transition-transform duration-200 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="font-medium">Ecological Impact</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-medium">Grid Status</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-[#9ed2b5] opacity-80 hover:bg-[#141b2b] hover:opacity-100 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-medium">Support</span>
+</a>
+</nav>
+<button class="bg-primary text-on-primary py-3 rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-primary/20 hover:scale-[0.98] transition-transform">
+                New Simulation
+            </button>
+<div class="pt-6 border-t border-outline-variant/15">
+<a class="flex items-center gap-3 p-3 text-[#9ed2b5] opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-8 bg-surface">
+<!-- Header Section -->
+<header class="mb-12 max-w-6xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-label-caps text-secondary block mb-2">MODULO SMART</span>
+<h1 class="text-5xl font-extrabold tracking-tight text-white mb-4">Monitoraggio Smart</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">
+                            Visualizzazione real-time dell'efficienza energetica. Confronta il consumo standard con le ottimizzazioni del sistema intelligente.
+                        </p>
+</div>
+<div class="flex gap-4">
+<div class="text-right">
+<span class="text-label-caps text-secondary block">RISPARMIO ATTUALE</span>
+<span class="text-4xl font-black text-primary">-24.8%</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+<!-- Main Chart Area -->
+<section class="lg:col-span-8 bg-surface-container-low rounded-xl p-6 relative overflow-hidden flex flex-col min-h-[450px]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-bold text-white">Flusso Energetico Orario</h3>
+<p class="text-xs text-secondary opacity-70">Dati aggiornati ogni 30 secondi</p>
+</div>
+<div class="flex gap-4 text-[10px] font-bold tracking-widest">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary rounded-full"></span>
+<span class="text-white">OTTIMIZZATO</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-outline rounded-full"></span>
+<span class="text-outline">STANDARD</span>
+</div>
+</div>
+</div>
+<!-- Simulated Chart Visualization -->
+<div class="flex-1 bg-surface-container-lowest rounded-lg p-4 relative">
+<div class="absolute inset-0 flex items-end px-4 pb-8 space-x-1">
+<!-- Bars simulating a graph background -->
+<div class="flex-1 h-3/4 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-2/3 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-4/5 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-1/2 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-3/5 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-3/4 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-2/3 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-4/5 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-1/2 bg-surface-container-low/30 rounded-t-sm"></div>
+<div class="flex-1 h-3/4 bg-surface-container-low/30 rounded-t-sm"></div>
+</div>
+<!-- SVG Lines for Chart Simulation -->
+<svg class="absolute inset-0 w-full h-full p-8" preserveaspectratio="none" viewbox="0 0 1000 400">
+<!-- Standard Consumption (Gray) -->
+<path d="M0,300 Q100,280 200,320 T400,250 T600,340 T800,200 T1000,260" fill="none" opacity="0.5" stroke="#86948a" stroke-dasharray="8,4" stroke-width="2"></path>
+<!-- Optimized Consumption (Primary Green) -->
+<path class="drop-shadow-[0_0_8px_rgba(78,222,163,0.4)]" d="M0,350 Q100,320 200,340 T400,280 T600,360 T800,240 T1000,290" fill="none" stroke="#4edea3" stroke-width="4"></path>
+<!-- Dots for points -->
+<circle cx="800" cy="240" fill="#4edea3" r="5"></circle>
+</svg>
+<!-- Tooltip Shadow -->
+<div class="absolute top-1/2 left-3/4 glass-panel border border-outline-variant/20 p-3 rounded-lg -translate-x-1/2 -translate-y-1/2">
+<p class="text-[10px] text-secondary-fixed-dim font-bold">16:45 - PEAK SAVING</p>
+<div class="flex justify-between gap-4 mt-1">
+<span class="text-lg font-bold text-white">1.2 kWh</span>
+<span class="text-primary font-bold">-32%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Controls & Stats Area -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- Savings Control Card -->
+<div class="bg-surface-container-high rounded-xl p-6">
+<h3 class="text-lg font-bold text-white mb-6">Attivazioni Intelligenti</h3>
+<div class="space-y-4">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="local_laundry_service">local_laundry_service</span>
+<div>
+<p class="text-sm font-bold text-white">Lavatrice</p>
+<p class="text-[10px] text-secondary opacity-60">Priorità Bassa</p>
+</div>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="heat_pump">heat_pump</span>
+<div>
+<p class="text-sm font-bold text-white">Pompa di Calore</p>
+<p class="text-[10px] text-secondary opacity-60">Priorità Alta</p>
+</div>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="electric_car">electric_car</span>
+<div>
+<p class="text-sm font-bold text-white">Ricarica Auto</p>
+<p class="text-[10px] text-secondary opacity-60">Notturno</p>
+</div>
+</div>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Card -->
+<div class="bg-primary-container/20 rounded-xl p-6 border-t-2 border-primary relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-sm font-bold text-primary mb-2">PROIEZIONE MENSILE</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-white">€142</span>
+<span class="text-sm text-primary font-bold">(-€42.50)</span>
+</div>
+<p class="text-xs text-on-primary-container mt-4 leading-relaxed">
+                                Sulla base del tuo attuale utilizzo smart, stai risparmiando l'equivalente di 12 alberi piantati ogni mese.
+                            </p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-primary/10 text-9xl pointer-events-none" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</aside>
+<!-- Small Metric Grid (Asymmetric) -->
+<div class="lg:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between">
+<span class="text-[10px] font-bold text-secondary opacity-60 tracking-widest">GRID STABILITY</span>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-2xl font-bold text-white">99.8%</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between">
+<span class="text-[10px] font-bold text-secondary opacity-60 tracking-widest">CO2 REDUCTION</span>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-2xl font-bold text-white">420kg</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" data-icon="eco">eco</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between">
+<span class="text-[10px] font-bold text-secondary opacity-60 tracking-widest">PEAK DEMAND</span>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-2xl font-bold text-white">3.4kW</span>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="bolt">bolt</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between border-b-2 border-primary/30">
+<span class="text-[10px] font-bold text-secondary opacity-60 tracking-widest">DEVICE HEALTH</span>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-2xl font-bold text-white">OPTIMAL</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full mt-auto border-t border-[#3c4a42]/15 px-8 py-12 flex justify-between items-center bg-[#0c1322]">
+<div class="flex flex-col gap-2">
+<p class="text-xs font-light tracking-wide text-[#9ed2b5] opacity-60">© 2024 Kinetic Grid Systems. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-xs text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs text-[#9ed2b5] opacity-60 hover:text-white transition-opacity" href="#">API Documentation</a>
+</div>
+</footer>
+<!-- FAB for Quick Simulation -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add_chart" style="font-variation-settings: 'FILL' 1;">add_chart</span>
+</button>
+</body></html>
